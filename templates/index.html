@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WLED Controller</title>
+</head>
+<body>
+    <h1>WLED Controller</h1>
+    <button onclick="toggle()">Toggle Light</button>
+
+    <script>
+        function toggle() {
+            fetch('/wled', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ on: true })
+            })
+            .then(res => res.json())
+            .then(data => alert("Command sent!"));
+        }
+    </script>
+</body>
+</html>
